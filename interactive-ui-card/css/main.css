@@ -51,7 +51,7 @@ h1 {
 }
 
 p {
-  clip-path: circle(0% at 100% 0);
+  clip-path: circle(0 at 100% 0);
   color: white;
   font-size: 0.9em;
   line-height: 1.6em;

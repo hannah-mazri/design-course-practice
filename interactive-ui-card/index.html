@@ -14,5 +14,60 @@
         blanditiis.
       </p>
     </div>
+
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.5.1/gsap.min.js"
+      integrity="sha512-IQLehpLoVS4fNzl7IfH8Iowfm5+RiMGtHykgZJl9AWMgqx0AmJ6cRWcB+GaGVtIsnC4voMfm8f2vwtY+6oPjpQ=="
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.5.1/CSSRulePlugin.min.js"
+      integrity="sha512-6MT8e40N5u36Um5SXKtwZmoKcCSg1XaKtexnXZPpQ4iJDHrBEHXKz37fnDovXezsaCd4oKCH5Y+vrcl7qpLPoA=="
+      crossorigin="anonymous"
+    ></script>
+
+    <script>
+      var card = document.getElementById('card');
+
+      var before = CSSRulePlugin.getRule('.card::before');
+      var after = CSSRulePlugin.getRule('.card::after');
+
+      var tl = gsap.timeline({ defaults: { ease: 'power2.inOut' } });
+
+      tl.to(before, {
+        width: '100%',
+      });
+      tl.to(
+        after,
+        {
+          width: '100%',
+        },
+        '-=.3'
+      );
+      tl.to(
+        'h1',
+        {
+          color: 'white',
+        },
+        '-=.7'
+      );
+      tl.to(
+        'p',
+        {
+          clipPath: 'circle(150% at 0% 100%)',
+          //   transform: 'translateX(0)',
+          //   ease: Back.easeOut.config(4),
+        },
+        '-=.3'
+      );
+      tl.pause();
+
+      card.addEventListener('mouseenter', () => {
+        tl.play();
+      });
+      card.addEventListener('mouseleave', () => {
+        tl.reverse();
+      });
+    </script>
   </body>
 </html>
